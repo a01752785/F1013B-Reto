@@ -18,12 +18,23 @@ m=6;
 % Calcula el valor del campo producido por la placa 2
 [MEx2,MEy2]=valorCampo(posx,posy,rx2,ry2,domt2,m,sigma2);
 % Los campos electricos resultantes son la suma de los campos de cada placa
-M1 = MEx + MEx2;
-M2 = MEy + MEy2;
+M_tot_x = MEx + MEx2;
+M_tot_y = MEy + MEy2;
 % Grafica el campo electrico
-graficador(posx,posy,M1,M2,n,op);
+graficador(posx,posy,M_tot_x,M_tot_y,n,op);
 hold on
 % Agrega placas cargadas a la grafica
 fplot(rx,ry,[-lon1,lon1], 'color', 'r', 'LineWidth', 3)
 fplot(rx2,ry2,[-lon2,lon2], 'color', 'b', 'LineWidth', 3)
+% Valores exactos del campo
+fprintf("Valores del campo en puntos especificos\n");
+queries=input("Numero de preguntas a realizar: ");
+for i = 1:queries
+    fila=input("Numero de fila de la malla: ");
+    columna=input("Numero de columna de la malla: ");
+    fprintf("El punto en el plano es: (%.2f,%.2f)\n",...
+        posx(fila,columna), posy(fila,columna));
+    E_value = sqrt(M_tot_x(fila,columna)^2 + M_tot_y(fila,columna));
+    fprintf("El valor del campo electrico en el punto es: %.2f\n N/C", E_value);
+end
 end
