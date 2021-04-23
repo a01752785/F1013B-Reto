@@ -1,10 +1,10 @@
-function Placas(lon)
+function Placas(lon1, lon2, dist)
 syms rx ry rx2 ry2 t
 n=11;
 xmin=-7; xmax=7; ymin=-7; ymax=7;
-a=2; lon=lon/2; lon2=5/2;
-rx(t)=-a; ry(t)=t; rx2(t)=a; ry2(t)=-t;
-domt=[-lon,lon]; domt2=[lon2,-lon2];
+dist=dist/2; lon1=lon1/2; lon2=lon2/2;
+rx(t)=-dist; ry(t)=t; rx2(t)=dist; ry2(t)=-t;
+domt=[-lon1,lon1]; domt2=[lon2,-lon2];
 m=10;
 sigma=1; sigma2=-1;
 [posx,posy]=malla(n,xmin,xmax,ymin,ymax);
@@ -15,6 +15,6 @@ M2 = MEy + MEy2;
 graficador(posx,posy,M1,M2,10,2,1)
 hold on
 % Agrega placas cargadas a la grafica
-fplot(rx,ry,[-lon,lon], 'color', 'r', 'LineWidth', 3)
+fplot(rx,ry,[-lon1,lon1], 'color', 'r', 'LineWidth', 3)
 fplot(rx2,ry2,[-lon2,lon2], 'color', 'b', 'LineWidth', 3)
 end
