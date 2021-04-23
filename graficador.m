@@ -1,11 +1,23 @@
-function graficador(malla_x, malla_y, Ex, Ey, n, intensity, op)
+function graficador(malla_x, malla_y, Ex, Ey, n, op)
+intensity = 0;
+scale = 0;
+if(op == 0)
+    intensity = 1;
+    scale = 1;
+elseif(op == 1)
+    intensity = 4;
+    scale = 2;
+elseif(op == 2)
+    intensity = 2;
+    scale = 1;
+end
 normVector = [];
 opa = 0.5;
 % Calcula la norma del vector en cada punto
 maxNorm = 0;
 for i = 1:n
     for j = 1:n
-        normVector(i,j) = sqrt(Ex(i,j)^2 + Ey(i,j)^2);
+        normVector(i,j) = sqrt(Ex(i,j)^2 + Ey(i,j)^2) * scale;
     end
 end
 maxNorm = max(max(normVector));
@@ -22,7 +34,10 @@ for i = 1:n
         opac(i,j) = ((opac(i,j) - minOpac) / (maxOpac - minOpac))^(1/intensity);
     end
 end
-
+figure
+hold on
+xlim([malla_x(1,1) malla_x(1,n)]);
+ylim([malla_y(n,1) malla_y(1,1)]);
 
 % Agrega una flecha a la grafica por cada punto
 if(op == 0) % Graficar con vectores unitarios
