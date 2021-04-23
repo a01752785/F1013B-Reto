@@ -1,4 +1,9 @@
 function graficador(malla_x, malla_y, Ex, Ey, n, op)
+% Opciones de graficacion predefinidas
+% intensity controla la variabilidad de la opacidad y la escala de color
+% A mayor valor, la escala es mas intensa
+% scale controla la longitud del vector unitario, a la inversa
+% A mayor valor, menor la longitud de los vectores
 intensity = 0;
 scale = 0;
 if(op == 0)
@@ -71,4 +76,5 @@ elseif(op == 2) % Graficar con opacidad
         end
     end
 end
+title("Campo eléctrico");
 end
