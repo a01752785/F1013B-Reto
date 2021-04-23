@@ -1,5 +1,11 @@
-function [Eqx,Eqy]=Coulomb(qx,qy,posx,posy)
-x=posx-qx; y=posy-qy;
-Eqx=x/(x^2+y^2)^(3/2);
-Eqy=y/(x^2+y^2)^(3/2);
+function [result_x, result_y] = Coulomb(q, r_x, r_y)
+r_norm = sqrt(r_x^2 + r_y^2);
+if(r_norm == 0)
+    result_x = 0;
+    result_y = 0;
+    return;
+end
+magnitude = 9e9 * q / r_norm^3;
+result_x = magnitude * r_x;
+result_y = magnitude * r_y;
 end

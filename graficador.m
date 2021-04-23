@@ -59,12 +59,4 @@ elseif(op == 2) % Graficar con opacidad
         end
     end
 end
-% Agrega placas cargadas a la grafica
-syms s
-linea1_x = -6;
-linea1_y = s;
-linea2_x = 6;
-linea2_y = s;
-fplot(linea1_x, linea1_y, [-8 8], 'color', 'r', 'LineWidth', 3)
-fplot(linea2_x, linea2_y, [-8 8], 'color', 'b', 'LineWidth', 3)
 end

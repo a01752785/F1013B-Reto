@@ -9,12 +9,12 @@ end
 lx=rx(domt(1)+delt)-rx(domt(1));
 ly=ry(domt(1)+delt)-ry(domt(1));
 difl=sqrt(lx^2+ly^2);
-q=sigma*difl;
+Q=sigma*difl;
 for i=1:n
     for j=1:n
         sumx=0; sumy=0;
         for cq=1:m
-            [Eqx,Eqy]=Coulomb(qx(cq),qy(cq),posx(i,j),posy(i,j));
+            [Eqx,Eqy]=Coulomb(Q/(m-1),posx(i,j)-qx(cq),posy(i,j)-qy(cq));
             sumx=sumx+Eqx;
             sumy=sumy+Eqy;
             
