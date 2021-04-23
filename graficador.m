@@ -22,10 +22,7 @@ for i = 1:n
         opac(i,j) = ((opac(i,j) - minOpac) / (maxOpac - minOpac))^(1/intensity);
     end
 end
-figure
-hold on
-xlim([-6 6]);
-ylim([-6 6]);
+
 
 % Agrega una flecha a la grafica por cada punto
 if(op == 0) % Graficar con vectores unitarios
